@@ -8,7 +8,7 @@ class Library {
     Book[] books;
 
     // add constructor(s) here
-    public Library() {
+    public Library(int memberSize, int numBooks) {
     	
     }
 
