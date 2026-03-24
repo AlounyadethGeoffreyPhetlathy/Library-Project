@@ -2,11 +2,10 @@
 public class Member {
 	// Fields
 	String name;
-	Book books;
+	Book book;
 	
 	// Constructor
-	public Member(String name, Book books) {
+	public Member(String name) {
 		this.name = name;
-		this.books = books;
 	}
 }

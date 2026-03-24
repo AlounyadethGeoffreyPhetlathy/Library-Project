@@ -5,8 +5,11 @@ class Library {
 
     // add more fields here
     Member[] members;
+    Book[] books;
 
     // add constructor(s) here
-
+    public Library() {
+    	
+    }
 
 }
