@@ -1,8 +1,13 @@
 // Simulation
 public class Main {
     public static void main(String[] args) {
-
-        Library lib = new Library();
+    	
+    	// Hardcoded variables
+    	int numMembers = 3;
+    	int numBooks
+    	
+    	// Get the nescessary classes
+        Library lib = new Library(3,3);
 
         while (true) {
 
