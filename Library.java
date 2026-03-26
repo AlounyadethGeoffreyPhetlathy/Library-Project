@@ -25,7 +25,7 @@ class Library {
     	this.books = new Book[numBooks];
     	numBooks -= 1;
     	while (numBooks >= 0) {
-    		this.books[numBooks] = new Book("Title " + numBooks, "Author " + numBooks, Rand.randomInt(20, 400), numBooks);
+    		this.books[numBooks] = new Book("Book " + numBooks, "Author " + numBooks, Rand.randomInt(20, 400), numBooks);
     		numBooks--;
     	}
     }
