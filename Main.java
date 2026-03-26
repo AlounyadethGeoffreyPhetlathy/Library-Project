@@ -52,6 +52,10 @@ public class Main {
             		System.out.println(m.name + " has given " + b.title);
             	}
             	break;
+            case 3: // Reading a book
+            	m = lib.members[Rand.randomInt(0, numMembers)];
+            	System.out.println(m.name + " came in today to their book, " + m.book.title + " by " + m.book.author + ", having " + m.book.pages + " pages!");
+            	break;
             }
 
             Input.waitForUserToPressEnter("Press Enter to simulate the next day.");
