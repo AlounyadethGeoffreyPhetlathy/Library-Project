@@ -4,7 +4,7 @@ public class Main {
     	
     	// Simulation variables
     	int numMembers = 5;
-    	int numBooks = 5;
+    	int numBooks = 25;
     	
     	// Get the nescessary classes
         Library lib = new Library(numMembers,numBooks);
@@ -54,7 +54,9 @@ public class Main {
             	break;
             case 3: // Reading a book
             	m = lib.members[Rand.randomInt(0, numMembers)];
-            	System.out.println(m.name + " came in today to their book, " + m.book.title + " by " + m.book.author + ", having " + m.book.pages + " pages!");
+            	if (m.book != null) {
+            		System.out.println(m.name + " came in today to their book, " + m.book.title + " by " + m.book.author + ", having " + m.book.pages + " pages!");
+            	}
             	break;
             }
 

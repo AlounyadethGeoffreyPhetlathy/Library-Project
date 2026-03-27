@@ -8,7 +8,7 @@ class Library {
     Book[] books;
 
     // add constructor(s) here
-    /* no methods is an interesting challenge. 
+    /* no methods is an interesting challenge for this assignment. 
      * My idea here is to use while loops in the constructor to generate members and books.
      * 
      * So far, it knows how many to generate each, working from the end of the array first. But can't generate
