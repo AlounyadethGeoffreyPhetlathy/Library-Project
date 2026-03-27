@@ -16,7 +16,7 @@ public class Main {
             System.out.println("\n--- Day " + lib.currentDay + " ---");
 
             // simulate a random event
-            int randomNumber = Rand.randomInt(0, 3); // could generate 0, 1, or 2
+            int randomNumber = Rand.randomInt(0, 4); // could generate 0, 1, 2, or 3
             
             // member and book
             Member m;
@@ -28,11 +28,11 @@ public class Main {
             	break;
             case 1: // Take out book
             	m = lib.members[Rand.randomInt(0, numMembers)];
-            	b = lib.books[Rand.randomInt(0, numMembers)];
+            	b = lib.books[Rand.randomInt(0, numBooks)];
             	if (b.isTaken) {
                 	System.out.println(m.name + " tried to take " + b.title + ", but it was already taken.");
             	} else if (m.book != null) {
-            		System.out.println(m.name + " tried to take " + b.title + ", but it already has a book.");
+            		System.out.println(m.name + " tried to take " + b.title + ", but they already have a book.");
             	} else {
             		m.book = b;
                 	b.isTaken = true;
@@ -41,23 +41,28 @@ public class Main {
             	break;
             case 2: // Give back book
             	m = lib.members[Rand.randomInt(0, numMembers)];
-            	b = lib.books[Rand.randomInt(0, numMembers)];
-            	if (!b.isTaken) {
-            		System.out.println(m.name + " tried to give " + b.title + ", but the book was not taken out.");
-            	} else if (m.book != b) {
-            		System.out.println(m.name + " tried to give " + b.title + ", but they don't have it.");
-            	} else {
+            	if (m.book != null) {
+            		System.out.println(m.name + " has given " + m.book.title);
+            		m.book.isTaken = false;
             		m.book = null;
-            		b.isTaken = false;
-            		System.out.println(m.name + " has given " + b.title);
+            		m.borrowTime = 0;
+            	} else {
+            		System.out.println(m.name + " tried to give a book, but they don't have any.");
             	}
             	break;
             case 3: // Reading a book
             	m = lib.members[Rand.randomInt(0, numMembers)];
             	if (m.book != null) {
-            		System.out.println(m.name + " came in today to their book, " + m.book.title + " by " + m.book.author + ", having " + m.book.pages + " pages!");
+            		System.out.println(m.name + " came in today to read their book, " + m.book.title + " by " + m.book.author + ", having " + m.book.pages + " pages!");
+            	} else {
+            		System.out.println(m.name + " tried reading a book, but they don't have any.");
             	}
             	break;
+            }
+            
+            for (Member mem : lib.members) {
+            	if (mem.book != null) mem.borrowTime++;
+            	if (mem.borrowTime >= 14) System.out.println("YOU TOOK IT FOR TOO LONG " + mem.name);
             }
 
             Input.waitForUserToPressEnter("Press Enter to simulate the next day.");
