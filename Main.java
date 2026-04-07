@@ -4,7 +4,7 @@ public class Main {
     	
     	// Simulation variables
     	int numMembers = 5;
-    	int numBooks = 25;
+    	int numBooks = 5;
     	
     	// Get the nescessary classes
         Library lib = new Library(numMembers,numBooks);
@@ -41,12 +41,19 @@ public class Main {
             	break;
             case 2: // Give back book
             	m = lib.members[Rand.randomInt(0, numMembers)];
-            	if (m.book != null) {
+            	if (m.borrowTime >= 14) {
+            		System.out.println(m.name + " has given " + m.book.title + " and paid a late fee of $" + m.loan.price);
+            		m.book.isTaken = false;
+            		m.book = null;
+            		m.borrowTime = 0;
+            		m.loan.price = 0f;
+            	} else if (m.book != null) {
             		System.out.println(m.name + " has given " + m.book.title);
             		m.book.isTaken = false;
             		m.book = null;
             		m.borrowTime = 0;
-            	} else {
+            	}
+            	else {
             		System.out.println(m.name + " tried to give a book, but they don't have any.");
             	}
             	break;
@@ -60,9 +67,10 @@ public class Main {
             	break;
             }
             
+            // For each day since they have taken a book, a counter called borrowTime is incremented
             for (Member mem : lib.members) {
             	if (mem.book != null) mem.borrowTime++;
-            	if (mem.borrowTime >= 14) System.out.println("YOU TOOK IT FOR TOO LONG " + mem.name);
+            	if (mem.borrowTime >= 14) mem.loan.price = Rand.randomFloat(10f, 30f);
             }
 
             Input.waitForUserToPressEnter("Press Enter to simulate the next day.");
