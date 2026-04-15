@@ -1,11 +1,11 @@
 //Represents the entire library system
 class Library {
 
-    int currentDay; // Current simulation day
+    private int currentDay; // Current simulation day
 
     // add more fields here
-    Member[] members;
-    Book[] books;
+    private Member[] members;
+    private Book[] books;
 
     // add constructor(s) here
     /* no methods is an interesting challenge for this assignment. 
@@ -28,6 +28,27 @@ class Library {
     		this.books[numBooks] = new Book("Book " + numBooks, "Author " + numBooks, Rand.randomInt(20, 400), numBooks);
     		numBooks--;
     	}
+    }
+    
+    // Library methods
+    public int getCurrentDay() {
+    	return currentDay;
+    }
+    
+    public void setCurrentDay(int currentDay) {
+    	this.currentDay = currentDay;
+    }
+    
+    public Member[] getMembers() {
+    	return members;
+    }
+    
+    public Member pickMember(int numMembers) {
+    	return members[Rand.randomInt(0, numMembers)];
+    }
+    
+    public Book pickBook(int numBooks) {
+    	return books[Rand.randomInt(0, numBooks)];
     }
 
 }
